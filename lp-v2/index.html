@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Path AI Boot Camp | マンツーマンAI副業スクール</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;}
+body{
+  background:#0a0a12;
+  color:#fff;
+  font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif;
+  line-height:1.7;
+  max-width:480px;
+  margin:0 auto;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+:root{
+  --purple:#7c3aed;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
+  --g:linear-gradient(135deg,#7c3aed,#ec4899);
+  --gh:linear-gradient(90deg,#7c3aed,#ec4899);
+  --card:#0d0d20;
+  --border:rgba(168,85,247,0.35);
+}
+
+.gt{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* ====== BUTTONS ====== */
+.btn-line{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--gh);color:#fff;font-size:18px;font-weight:900;
+  padding:18px 24px;border-radius:50px;width:100%;border:none;
+  cursor:pointer;text-decoration:none;letter-spacing:.02em;
+  box-shadow:0 0 28px rgba(168,85,247,.5);
+}
+.btn-line-green{
+  background:linear-gradient(90deg,#06c755,#00a649);
+  box-shadow:0 0 28px rgba(6,199,85,.4);
+}
+
+/* ====== HERO ====== */
+.hero{
+  background:linear-gradient(180deg,#08081a 0%,#180928 60%,#0a0a12 100%);
+  padding:40px 20px 32px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(124,58,237,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,58,237,.07) 1px,transparent 1px);
+  background-size:40px 40px;pointer-events:none;
+}
+.hero-glow{
+  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:340px;height:340px;
+  background:radial-gradient(ellipse,rgba(124,58,237,.25) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;}
+.hero-eyebrow{
+  font-size:11px;color:rgba(255,255,255,.55);
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px;
+}
+.hero-h1{
+  font-size:38px;font-weight:900;line-height:1.15;
+  letter-spacing:-.02em;margin-bottom:10px;
+}
+.hero-h1 .l1{color:#fff;}
+.hero-h1 .l2{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;}
+.hero-pills{display:flex;flex-direction:column;gap:9px;margin-bottom:28px;}
+.hero-pill{
+  background:rgba(124,58,237,.18);border:1px solid var(--border);
+  border-radius:50px;padding:11px 20px;font-size:14px;font-weight:700;
+}
+.hero-pill .hl{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-notice{font-size:12px;color:rgba(255,255,255,.45);margin-top:14px;}
+
+/* ====== CTA BLOCK (light) ====== */
+.cta-wrap{background:#f4f4f8;padding:28px 20px;}
+.cta-box{background:#fff;border-radius:16px;padding:28px 20px;}
+.cta-lead{font-size:15px;color:#333;text-align:center;line-height:1.7;margin-bottom:20px;}
+.cta-lead strong{color:#7c3aed;text-decoration:underline;}
+.cta-notes{font-size:11px;color:#999;margin-top:16px;line-height:2;}
+
+/* ====== LEARN ====== */
+.learn{background:linear-gradient(180deg,#0a0a12,#130625,#0a0a12);padding:48px 20px;}
+.sec-title{font-size:26px;font-weight:900;text-align:center;line-height:1.35;margin-bottom:28px;}
+.learn-box{
+  background:rgba(10,10,30,.9);border:1px solid rgba(168,85,247,.5);
+  border-radius:16px;padding:20px 18px;position:relative;overflow:hidden;
+}
+.learn-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g);}
+.learn-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));}
+.learn-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(168,85,247,.18);}
+.learn-item:last-child{border-bottom:none;}
+.lcheck{
+  width:24px;height:24px;flex-shrink:0;
+  background:var(--g);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;margin-top:1px;
+}
+.ltext{font-size:14px;line-height:1.65;}
+.ltext strong{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;font-size:15px;}
+
+/* ====== PROBLEM ====== */
+.problem{background:#0d0d18;padding:48px 20px;}
+.problem-eyebrow{font-size:13px;color:rgba(255,255,255,.55);text-align:center;margin-bottom:8px;}
+.problem-title{font-size:23px;font-weight:900;text-align:center;line-height:1.4;margin-bottom:24px;}
+.photo-ph{
+  width:100%;height:200px;
+  background:linear-gradient(135deg,#1a0a2e,#0a0018);
+  border:1px solid var(--border);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.25);font-size:13px;margin-bottom:24px;
+}
+.problem-body{font-size:15px;line-height:1.95;color:rgba(255,255,255,.85);}
+.problem-body strong{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;}
+.problem-body p+p{margin-top:16px;}
+
+/* ====== TARGET ====== */
+.target{background:linear-gradient(180deg,#0d0d18,#1a0630);padding:48px 20px;}
+.target-box{
+  background:linear-gradient(135deg,rgba(168,85,247,.13),rgba(236,72,153,.08));
+  border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:20px;
+}
+.target-copy{font-size:15px;line-height:1.95;color:rgba(255,255,255,.9);}
+.target-copy strong{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;}
+.target-copy p+p{margin-top:14px;}
+
+/* ====== MISCONCEPTIONS ====== */
+.miscon{background:linear-gradient(180deg,#0a0a20,#15082e);padding:48px 20px;}
+.miscon-img{
+  width:100%;height:200px;
+  background:linear-gradient(135deg,#1a0a2e,#0a0018);
+  border:1px solid var(--border);border-radius:12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:16px;margin-bottom:8px;position:relative;
+}
+.mlabel{
+  background:rgba(10,10,30,.88);border:1px solid rgba(236,72,153,.55);
+  border-radius:8px;padding:7px 11px;font-size:11px;font-weight:700;
+  line-height:1.4;text-align:center;
+}
+.miscon-labels{display:flex;flex-direction:column;gap:8px;align-items:center;width:100%;}
+
+/* ====== REASONS ====== */
+.reasons{background:linear-gradient(180deg,#15082e,#0a0a12);padding:48px 20px;}
+.reasons-head{text-align:center;font-size:32px;font-weight:900;line-height:1.15;}
+.reasons-head .big{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.reasons-sub{text-align:center;font-size:20px;font-weight:900;margin:8px 0 28px;color:rgba(255,255,255,.9);}
+.rcard{
+  background:rgba(124,58,237,.1);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;margin-bottom:18px;
+}
+.rcard-hd{background:var(--g);padding:7px 16px;font-size:13px;font-weight:700;letter-spacing:.08em;}
+.rcard-body{padding:16px;display:grid;grid-template-columns:1fr 80px;gap:12px;align-items:start;}
+.rcard-title{font-size:16px;font-weight:900;line-height:1.4;margin-bottom:7px;}
+.rcard-title span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.rcard-desc{font-size:12px;color:rgba(255,255,255,.68);line-height:1.75;}
+.rcard-img{
+  background:linear-gradient(135deg,#1a0a2e,#0a0018);border:1px solid var(--border);
+  border-radius:8px;height:90px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+
+/* ====== CURRICULUM ====== */
+.curriculum{background:#0a0a12;padding:48px 20px;}
+.curri-head{text-align:center;margin-bottom:24px;}
+.curri-badge{
+  display:inline-block;background:var(--g);color:#fff;
+  font-size:11px;font-weight:700;padding:3px 14px;border-radius:20px;margin-bottom:10px;
+}
+.curri-title{font-size:26px;font-weight:900;line-height:1.3;}
+.curri-title .ac{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.curri-squeeze{text-align:center;font-size:18px;font-weight:900;margin-bottom:24px;}
+.curri-squeeze .big{font-size:40px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.curri-items{display:flex;flex-direction:column;gap:10px;}
+.curri-item{
+  display:flex;gap:12px;align-items:flex-start;
+  background:rgba(124,58,237,.1);border:1px solid rgba(168,85,247,.28);
+  border-radius:10px;padding:13px;
+}
+.cnum{
+  background:var(--g);color:#fff;font-size:12px;font-weight:900;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ctext{font-size:14px;line-height:1.65;color:rgba(255,255,255,.9);}
+
+/* ====== 3 STEP ====== */
+.steps{background:linear-gradient(180deg,#0a0a12,#13062a);padding:48px 20px;}
+.step-title{text-align:center;font-size:24px;font-weight:900;margin-bottom:28px;line-height:1.3;}
+.step-title .big{font-size:36px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.scard{
+  background:rgba(124,58,237,.1);border:1px solid var(--border);
+  border-radius:12px;padding:18px;display:flex;gap:14px;align-items:center;
+  margin-bottom:10px;
+}
+.snum{
+  width:48px;height:48px;flex-shrink:0;background:var(--g);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;line-height:1.3;text-align:center;
+}
+.scon-title{font-size:16px;font-weight:900;margin-bottom:4px;}
+.scon-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;}
+.sconnector{text-align:center;color:rgba(168,85,247,.55);font-size:22px;margin-bottom:10px;}
+.step-note{text-align:center;font-size:13px;color:rgba(255,255,255,.55);margin-top:20px;line-height:1.9;}
+.step-note span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;}
+
+/* ====== 5 FEATURES ====== */
+.features{background:#0d0d18;padding:48px 20px;}
+.feat-bg{font-size:56px;font-weight:900;color:rgba(255,255,255,.03);text-align:center;line-height:1;margin-bottom:-16px;letter-spacing:.15em;}
+.feat-title{font-size:24px;font-weight:900;text-align:center;margin-bottom:28px;line-height:1.35;position:relative;}
+.feat-title span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.feat-cards{display:flex;flex-direction:column;gap:10px;}
+.fcard{
+  background:linear-gradient(135deg,rgba(124,58,237,.14),rgba(236,72,153,.07));
+  border:1px solid var(--border);border-radius:12px;
+  padding:14px 18px;display:flex;gap:14px;align-items:flex-start;
+  position:relative;overflow:hidden;
+}
+.fcard::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--g);}
+.fnum-wrap{flex-shrink:0;text-align:center;}
+.feyebrow{font-size:9px;color:rgba(255,255,255,.45);white-space:nowrap;}
+.fnum{font-size:44px;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.fcon-eye{font-size:10px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;margin-bottom:3px;}
+.fcon-title{font-size:15px;font-weight:900;line-height:1.4;}
+
+/* ====== INSTRUCTOR ====== */
+.instructor{background:linear-gradient(180deg,#130625,#0a0a12);padding:48px 20px;}
+.instr-title{
+  background:var(--g);color:#fff;font-size:17px;font-weight:900;
+  padding:10px 20px;border-radius:8px;margin-bottom:22px;text-align:center;
+}
+.instr-bio{font-size:14px;line-height:1.95;color:rgba(255,255,255,.85);margin-bottom:28px;}
+.instr-strength-head{
+  font-size:15px;font-weight:900;padding:10px 16px;
+  background:var(--g);border-radius:8px;margin-bottom:14px;
+}
+.istrength-item{margin-bottom:16px;}
+.ist-title{font-size:18px;font-weight:900;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
+.ist-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7;padding-bottom:16px;border-bottom:1px solid rgba(168,85,247,.18);}
+.istrength-item:last-child .ist-desc{border-bottom:none;}
+
+/* ====== FAQ ====== */
+.faq{background:linear-gradient(180deg,#0a0a12,#15082e,#0a0a12);padding:48px 20px;}
+.faq-bg{font-size:72px;font-weight:900;color:rgba(255,255,255,.025);text-align:center;line-height:1;margin-bottom:-24px;}
+.faq-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:32px;position:relative;}
+.faq-item{margin-bottom:24px;}
+.faq-q{
+  background:var(--g);border-radius:50px;padding:11px 18px;
+  font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.fqicon{font-style:italic;font-size:18px;font-weight:900;flex-shrink:0;}
+.faq-a{padding:0 6px;font-size:14px;line-height:1.95;color:rgba(255,255,255,.82);}
+.faq-a p+p{margin-top:12px;}
+
+/* ====== HOW TO (3STEP登録) ====== */
+.howto{background:linear-gradient(180deg,#0a0a12,#13062a);padding:48px 20px;}
+.howto-small{text-align:center;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;}
+.howto-title{text-align:center;font-size:26px;font-weight:900;margin-bottom:28px;line-height:1.3;}
+.howto-title .big{font-size:36px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.how-steps{
+  background:rgba(124,58,237,.1);border:1px solid var(--border);border-radius:16px;
+  padding:22px 16px;display:flex;align-items:center;justify-content:space-around;
+  gap:6px;margin-bottom:28px;
+}
+.hstep{flex:1;text-align:center;}
+.hnum{
+  width:34px;height:34px;background:var(--g);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:15px;margin:0 auto 7px;
+}
+.hicon{font-size:28px;margin-bottom:6px;}
+.htext{font-size:11px;line-height:1.45;color:rgba(255,255,255,.78);}
+.harrow{color:rgba(168,85,247,.55);font-size:20px;}
+
+/* ====== BOTTOM CTA ====== */
+.btm-cta{background:#f4f4f8;padding:36px 20px;}
+.btm-title{font-size:15px;color:#333;text-align:center;margin-bottom:20px;line-height:1.75;}
+.btm-title strong{color:#7c3aed;text-decoration:underline;}
+.btm-notes{font-size:11px;color:#999;margin-top:18px;line-height:2.1;}
+
+/* ====== SERVICE ====== */
+.service{background:linear-gradient(180deg,#0a0a12,#15082e);padding:48px 20px;}
+.svc-title{
+  background:var(--g);color:#fff;font-size:14px;font-weight:700;
+  padding:8px 20px;border-radius:8px;text-align:center;margin-bottom:20px;
+}
+.svc-name{text-align:center;font-size:20px;font-weight:900;margin-bottom:22px;line-height:1.45;}
+.svc-table{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.svc-row{display:grid;grid-template-columns:2fr 3fr;border-bottom:1px solid rgba(168,85,247,.18);}
+.svc-row:last-child{border-bottom:none;}
+.svc-label{font-size:12px;color:rgba(255,255,255,.45);padding:13px 14px;border-right:1px solid rgba(168,85,247,.18);background:rgba(124,58,237,.07);}
+.svc-val{font-size:14px;font-weight:700;padding:13px 14px;}
+
+/* ====== FOOTER ====== */
+footer{
+  background:#050508;padding:24px 20px;text-align:center;
+  font-size:12px;color:rgba(255,255,255,.28);
+  border-top:1px solid rgba(168,85,247,.15);
+}
+footer a{color:rgba(255,255,255,.35);}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Path AI Boot Camp</p>
+    <h1 class="hero-h1">
+      <span class="l1">AIで稼ぐ力を</span><br>
+      <span class="l2">最短で手に入れる</span>
+    </h1>
+    <p class="hero-sub">マンツーマン × 実務特化 × 案件獲得まで伴走</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><span class="hl">副業で月収UP</span>できるスキルが身につく</div>
+      <div class="hero-pill"><span class="hl">マンツーマン</span>で完全個別サポート</div>
+      <div class="hero-pill"><span class="hl">案件獲得まで</span>一緒に走りきる</div>
+    </div>
+    <a href="#" class="btn-line">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.08 2 11.12c0 2.73 1.3 5.17 3.34 6.85L4.5 22l4.2-2.2c1.07.3 2.2.46 3.3.46 5.52 0 10-4.08 10-9.12S17.52 2 12 2z"/></svg>
+      まずLINEで話を聞く（無料）
+    </a>
+    <p class="hero-notice">⚡ 今月の無料相談枠：残り7名 · しつこい勧誘なし</p>
+  </div>
+</section>
+
+<!-- ===== CTA① ===== -->
+<div class="cta-wrap">
+  <div class="cta-box">
+    <p class="cta-lead">まず<strong>無料LINE相談（30分）</strong>の<br>予約をしてください</p>
+    <a href="#" class="btn-line btn-line-green">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.08 2 11.12c0 2.73 1.3 5.17 3.34 6.85L4.5 22l4.2-2.2c1.07.3 2.2.46 3.3.46 5.52 0 10-4.08 10-9.12S17.52 2 12 2z"/></svg>
+      公式LINEに登録する（無料）
+    </a>
+    <p class="cta-notes">
+      ※登録後、無料相談の予約案内をお送りします。<br>
+      ※しつこい勧誘は一切しません。<br>
+      ※ご登録情報のプライバシーは厳守します。<br>
+      ※LINEはいつでも退会できます。
+    </p>
+  </div>
+</div>
+
+<!-- ===== LEARN ===== -->
+<section class="learn">
+  <h2 class="sec-title">
+    無料LINE相談で<br>
+    <span class="gt">何が手に入る？</span>
+  </h2>
+  <div class="learn-box">
+    <div class="learn-item">
+      <div class="lcheck">✓</div>
+      <div class="ltext"><strong>あなた専用のAI副業ロードマップ</strong>を作成してお届けします</div>
+    </div>
+    <div class="learn-item">
+      <div class="lcheck">✓</div>
+      <div class="ltext"><strong>今すぐ使える3つのAIツール</strong>の選び方と実践法を解説</div>
+    </div>
+    <div class="learn-item">
+      <div class="lcheck">✓</div>
+      <div class="ltext"><strong>独学で詰まっていた疑問</strong>をその場でスッキリ解消</div>
+    </div>
+    <div class="learn-item">
+      <div class="lcheck">✓</div>
+      <div class="ltext"><strong>月収を上げるための最短戦略</strong>を現状に合わせてご提案</div>
+    </div>
+    <div class="learn-item">
+      <div class="lcheck">✓</div>
+      <div class="ltext">わからないことは<strong>個別で何でも質問OK！</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section class="problem">
+  <p class="problem-eyebrow">突然ですが、今、あなたは</p>
+  <h2 class="problem-title">
+    <span class="gt">"AI格差"</span>が生まれている<br>時代の真っ只中にいます。
+  </h2>
+  <div class="photo-ph">📷 講師写真（要追加）</div>
+  <div class="problem-body">
+    <p>SNSを見れば、AIで月収を大幅に上げた人が次々と現れている。</p>
+    <p><strong>AIを使いこなせる人</strong>と<strong>使いこなせない人</strong>の差は、今この瞬間も広がっている。</p>
+    <p>今より<strong>"もっと自由"</strong>で<strong>"もっと自分らしい"</strong>働き方を手に入れたい。そう思っているなら、今すぐ動き出すのが正解です。</p>
+  </div>
+</section>
+
+<!-- ===== TARGET ===== -->
+<section class="target">
+  <h2 class="sec-title">そんなあなたへ</h2>
+  <div class="photo-ph">📷 イメージ写真（要追加）</div>
+  <div class="target-box">
+    <div class="target-copy">
+      <p>このAI時代に<strong>"自分らしい働き方"</strong>を実現するためには<strong>"AIを稼ぐ道具として使いこなせるようになる"</strong>これが1番の近道です。</p>
+      <p>AIのビッグウェーブを乗りこなすには、<strong>"今すぐに"正しい方法でスタートダッシュ</strong>をきることが必要です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISCONCEPTIONS ===== -->
+<section class="miscon">
+  <h2 class="sec-title">
+    「AIで稼ぐのは<br>自分には無理」と<br>思っている人の<br>
+    <span class="gt" style="font-size:40px;">3つの誤解</span>
+  </h2>
+  <div class="miscon-img">
+    <div class="miscon-labels">
+      <div class="mlabel">"AIは難しくて<br>自分には無理"</div>
+      <div class="mlabel">センスがある人だけが<br>稼げる</div>
+      <div class="mlabel">独学でも<br>なんとかなる</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REASONS ===== -->
+<section class="reasons">
+  <h2 class="reasons-head"><span class="big">これらは大きな間違い！</span></h2>
+  <p class="reasons-sub">なぜなら</p>
+
+  <div class="rcard">
+    <div class="rcard-hd">Reason 1</div>
+    <div class="rcard-body">
+      <div>
+        <p class="rcard-title">"デキる人"はもう既に<br><span>AIで稼いでいる！</span></p>
+        <p class="rcard-desc">単純作業からクリエイティブな仕事まで、AIを最大限に活用している人はまだごくわずか。あなたも今すぐAIで稼げる側になれます。</p>
+      </div>
+      <div class="rcard-img">💻</div>
+    </div>
+  </div>
+
+  <div class="rcard">
+    <div class="rcard-hd">Reason 2</div>
+    <div class="rcard-body">
+      <div>
+        <p class="rcard-title">AIを使いこなす<br><span>鍵は「日本語」だけ！</span></p>
+        <p class="rcard-desc">「AIに仕事を任せるのは難しい」と思っていませんか？実は、日本語で指示を出すだけで誰でもAIを使いこなせます。</p>
+      </div>
+      <div class="rcard-img">🗣️</div>
+    </div>
+  </div>
+
+  <div class="rcard">
+    <div class="rcard-hd">Reason 3</div>
+    <div class="rcard-body">
+      <div>
+        <p class="rcard-title">独学で止まるのは<br><span>「伴走者がいない」から</span></p>
+        <p class="rcard-desc">情報はあふれている。でも一人で進めようとすると、必ずどこかで詰まる。正しいサポートがあれば、誰でも前に進める。</p>
+      </div>
+      <div class="rcard-img">🤝</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CURRICULUM ===== -->
+<section class="curriculum">
+  <div class="curri-head">
+    <span class="curri-badge">未経験からでも</span>
+    <p class="curri-title">AIで稼げるようになる<br><span class="ac">実践カリキュラムが</span></p>
+  </div>
+  <p class="curri-squeeze"><span class="big">ギュッ</span>と凝縮されています</p>
+  <div class="curri-items">
+    <div class="curri-item">
+      <div class="cnum">1</div>
+      <div class="ctext">今すぐ使える厳選<strong>3つのAIツール</strong>の実践的な使い方を基礎から解説</div>
+    </div>
+    <div class="curri-item">
+      <div class="cnum">2</div>
+      <div class="ctext"><strong>"今"のあなた</strong>に最適な案件の取り方・収益化の最短ルート</div>
+    </div>
+    <div class="curri-item">
+      <div class="cnum">3</div>
+      <div class="ctext">AIを使った<strong>具体的な案件獲得の進め方</strong>を実務ベースで解説</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3 STEP ===== -->
+<section class="steps">
+  <h2 class="step-title">AI副業スタートまでの<br><span class="big">3STEP</span></h2>
+  <div class="scard">
+    <div class="snum">STEP<br>1</div>
+    <div>
+      <p class="scon-title">LINEで無料相談を予約</p>
+      <p class="scon-desc">公式LINEに登録後、30分の無料Zoom相談を予約します。</p>
+    </div>
+  </div>
+  <div class="sconnector">▼</div>
+  <div class="scard">
+    <div class="snum">STEP<br>2</div>
+    <div>
+      <p class="scon-title">マンツーマンで現状をヒアリング</p>
+      <p class="scon-desc">あなたの今の状況・目標・悩みを一緒に整理します。</p>
+    </div>
+  </div>
+  <div class="sconnector">▼</div>
+  <div class="scard">
+    <div class="snum">STEP<br>3</div>
+    <div>
+      <p class="scon-title">あなた専用プランでスタート</p>
+      <p class="scon-desc">現状に合わせた最短ロードマップで、実践をスタートします。</p>
+    </div>
+  </div>
+  <p class="step-note">上記3STEPを通して<br><span>あなたが稼げるようになるまで</span><br>伴走サポートしていきます</p>
+</section>
+
+<!-- ===== 5 FEATURES ===== -->
+<section class="features">
+  <div class="feat-bg">FEATURE</div>
+  <h2 class="feat-title">このBootCampで<br>身につく<span>5つのこと</span></h2>
+  <div class="feat-cards">
+    <div class="fcard">
+      <div class="fnum-wrap">
+        <div class="feyebrow">大反響！！</div>
+        <div class="fnum">1</div>
+      </div>
+      <div>
+        <p class="fcon-eye">今すぐ使える</p>
+        <p class="fcon-title">AIで稼ぐための<br>"たったの3ツール"</p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="fnum-wrap">
+        <div class="feyebrow">知らないと損！？</div>
+        <div class="fnum">2</div>
+      </div>
+      <div>
+        <p class="fcon-eye">実例を元に解説</p>
+        <p class="fcon-title">案件獲得まで<br>最短で辿り着く方法</p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="fnum-wrap">
+        <div class="feyebrow">早いもの勝ち！</div>
+        <div class="fnum">3</div>
+      </div>
+      <div>
+        <p class="fcon-eye">今やるべき理由</p>
+        <p class="fcon-title">"今"AI副業を始めると<br>得られる圧倒的メリット</p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="fnum-wrap">
+        <div class="feyebrow">詰まらない！</div>
+        <div class="fnum">4</div>
+      </div>
+      <div>
+        <p class="fcon-eye">マンツーマンだから</p>
+        <p class="fcon-title">どんな疑問も即解消<br>一人で詰まらない仕組み</p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="fnum-wrap">
+        <div class="feyebrow">使わなきゃ損！！</div>
+        <div class="fnum">5</div>
+      </div>
+      <div>
+        <p class="fcon-eye">実務ベースで</p>
+        <p class="fcon-title">AIを使えば作業効率が<br>劇的にUP！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTRUCTOR ===== -->
+<section class="instructor">
+  <p class="instr-title">講師の実績</p>
+  <div class="photo-ph">📷 愛偉良さんの写真（要追加）</div>
+  <p class="instr-bio">
+    2019年からAIを活用した副業を開始。<br>
+    3つのAIツールだけに絞ることで、<strong>月収30万円の副業収益を実現。</strong><br><br>
+    「広く浅く教えても、稼げるようにならない」という実感から、実務特化型のマンツーマンサポートを開始。<br><br>
+    ※実績・経歴をここに追記してください
+  </p>
+  <p class="instr-strength-head">講師 福安 愛偉良 の強み</p>
+  <div class="istrength-item">
+    <p class="ist-title">とにかく実務に直結</p>
+    <p class="ist-desc">理論より実践。実際に稼いだ経験をもとに、すぐ使える内容だけを厳選して伝えます。</p>
+  </div>
+  <div class="istrength-item">
+    <p class="ist-title">とにかくマンツーマン</p>
+    <p class="ist-desc">大人数の一括指導はしません。あなたの状況に合わせた完全個別サポートが強みです。</p>
+  </div>
+  <div class="istrength-item">
+    <p class="ist-title">とにかく結果にこだわる</p>
+    <p class="ist-desc">「わかった」で終わらせない。案件が取れるまで一緒に走りきります。</p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="faq-bg">FAQ</div>
+  <h2 class="faq-title">よくある質問</h2>
+  <div class="faq-item">
+    <div class="faq-q"><span class="fqicon">Q</span>AIを使ったことがないのですが…</div>
+    <div class="faq-a">
+      <p>全く問題ございません！</p>
+      <p>AIの使い方は難しくありません。なにより、AIはあくまでも「道具」でしかありません。</p>
+      <p>今後AIを使って自分で稼ぐ力をつけていきたいと思っているなら、きっと「勉強になった」と思えるはずです。</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="fqicon">Q</span>副業目的での参加は可能ですか？</div>
+    <div class="faq-a">
+      <p>はい！大歓迎です。</p>
+      <p>最初は副業として始められる方が非常に多く、会社員をやりながらAIを使った収益化を目指している方がたくさんいます。</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="fqicon">Q</span>忙しくてなかなか時間が取れません…</div>
+    <div class="faq-a">
+      <p>マンツーマンなので、あなたのペースに合わせてサポートします。</p>
+      <p>Youtubeで動画を見てダラダラ…気づけば1時間も過ぎている。そんな時間があるなら、あなたの人生を変えるかもしれない30分の相談に、ぜひ来てください！</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="fqicon">Q</span>無料相談だけでも大丈夫ですか？</div>
+    <div class="faq-a">
+      <p>もちろんです！</p>
+      <p>しつこい勧誘は一切しません。まず話を聞いてみて、自分に合いそうだと思ったら次のステップを考えてください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW TO ===== -->
+<section class="howto">
+  <p class="howto-small">今すぐカンタン登録方法</p>
+  <h2 class="howto-title"><span class="big">3STEP</span>で<br>相談予約完了！</h2>
+  <div class="how-steps">
+    <div class="hstep">
+      <div class="hnum">1</div>
+      <div class="hicon">💬</div>
+      <div class="htext">LINEを<br>登録する</div>
+    </div>
+    <div class="harrow">›</div>
+    <div class="hstep">
+      <div class="hnum">2</div>
+      <div class="hicon">📩</div>
+      <div class="htext">「相談希望」<br>とメッセージ</div>
+    </div>
+    <div class="harrow">›</div>
+    <div class="hstep">
+      <div class="hnum">3</div>
+      <div class="hicon">🎯</div>
+      <div class="htext">日程を<br>決めて完了！</div>
+    </div>
+  </div>
+  <a href="#" class="btn-line">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.08 2 11.12c0 2.73 1.3 5.17 3.34 6.85L4.5 22l4.2-2.2c1.07.3 2.2.46 3.3.46 5.52 0 10-4.08 10-9.12S17.52 2 12 2z"/></svg>
+    公式LINEに登録する（無料）
+  </a>
+</section>
+
+<!-- ===== BOTTOM CTA ===== -->
+<div class="btm-cta">
+  <p class="btm-title">
+    <strong>無料LINE相談</strong>にご登録いただいた方に<br>
+    30分のZoom相談枠をプレゼントします
+  </p>
+  <a href="#" class="btn-line btn-line-green">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.08 2 11.12c0 2.73 1.3 5.17 3.34 6.85L4.5 22l4.2-2.2c1.07.3 2.2.46 3.3.46 5.52 0 10-4.08 10-9.12S17.52 2 12 2z"/></svg>
+    公式LINEに登録する（無料）
+  </a>
+  <p class="btm-notes">
+    ※登録後、無料相談の予約案内をお送りします。<br>
+    ※しつこい勧誘は一切しません。<br>
+    ※ご登録情報のプライバシーは厳守します。<br>
+    ※LINEはいつでも退会できます。
+  </p>
+</div>
+
+<!-- ===== SERVICE ===== -->
+<section class="service">
+  <p class="svc-title">本サービスの位置付け</p>
+
+  <p style="font-size:13px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:8px;">無料</p>
+  <div style="background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(236,72,153,.1));border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
+    <p style="font-size:14px;font-weight:700;text-align:center;color:rgba(255,255,255,.6);margin-bottom:14px;">無料LINE相談</p>
+    <p style="font-size:22px;font-weight:900;text-align:center;margin-bottom:16px;line-height:1.3;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Path AI Boot Camp<br>無料30分相談</p>
+    <div style="border-top:1px solid rgba(168,85,247,.2);padding-top:14px;display:flex;flex-direction:column;gap:10px;">
+      <div style="text-align:center;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講方法</span><br><span style="font-size:15px;font-weight:700;">LINEで予約 → Zoomで実施</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(168,85,247,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講費用</span><br><span style="font-size:22px;font-weight:900;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">無料</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(168,85,247,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">内容</span><br><span style="font-size:14px;font-weight:700;">現状ヒアリング・ロードマップ作成・質問何でもOK</span></div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:8px;">有料</p>
+  <div style="background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(124,58,237,.1));border:1px solid rgba(236,72,153,.4);border-radius:12px;padding:20px;margin-bottom:0;">
+    <p style="font-size:14px;font-weight:700;text-align:center;color:rgba(255,255,255,.6);margin-bottom:14px;">有料プログラム</p>
+    <p style="font-size:22px;font-weight:900;text-align:center;margin-bottom:16px;line-height:1.3;">Path AI Boot Camp<br><span style="background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">マンツーマンプログラム</span></p>
+    <div style="border-top:1px solid rgba(236,72,153,.2);padding-top:14px;display:flex;flex-direction:column;gap:10px;">
+      <div style="text-align:center;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講方法</span><br><span style="font-size:15px;font-weight:700;">オンライン（マンツーマン）</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(236,72,153,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講費用</span><br><span style="font-size:15px;font-weight:700;">プランによって異なります</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(236,72,153,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">内容</span><br><span style="font-size:14px;font-weight:700;">AI副業実践・案件獲得まで伴走サポート</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPANY ===== -->
+<section style="background:#1a1a2e;padding:48px 20px;">
+  <h2 style="font-size:24px;font-weight:900;text-align:center;margin-bottom:28px;">運営会社</h2>
+  <div style="font-size:14px;line-height:2.2;color:rgba(255,255,255,.8);">
+    <p>会社名：※要追記</p>
+    <p>設立：※要追記</p>
+    <p>代表責任者：福安 愛偉良</p>
+    <p>所在地：※要追記</p>
+  </div>
+  <div style="width:100%;height:140px;background:linear-gradient(135deg,#1a0a2e,#0a0018);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:13px;margin-top:20px;">📷 会社・オフィス写真（要追加）</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p style="font-size:16px;font-weight:700;margin-bottom:8px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Path AI Boot Camp</p>
+  <p>© 2024 Path AI Boot Camp. All rights reserved.</p>
+  <p style="margin-top:10px;"><a href="#">プライバシーポリシー</a> · <a href="#">特定商取引法に基づく表記</a> · <a href="#">サービス利用規約</a></p>
+</footer>
+
+</body>
+</html>
