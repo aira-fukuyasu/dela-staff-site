@@ -8,8 +8,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{font-size:16px;}
 body{
-  background:#0a0a12;
-  color:#fff;
+  background:#ffffff;
+  color:#111111;
   font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif;
   line-height:1.7;
   max-width:480px;
@@ -20,13 +20,12 @@ img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 
 :root{
-  --purple:#7c3aed;
-  --pink:#ec4899;
-  --cyan:#06b6d4;
-  --g:linear-gradient(135deg,#7c3aed,#ec4899);
-  --gh:linear-gradient(90deg,#7c3aed,#ec4899);
-  --card:#0d0d20;
-  --border:rgba(168,85,247,0.35);
+  --orange:#ff6200;
+  --orange2:#ff8c00;
+  --g:linear-gradient(135deg,#ff6200,#ff8c00);
+  --gh:linear-gradient(90deg,#ff6200,#ff8c00);
+  --card:#ffffff;
+  --border:rgba(255,98,0,0.28);
 }
 
 .gt{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -37,157 +36,202 @@ a{color:inherit;text-decoration:none;}
   background:var(--gh);color:#fff;font-size:18px;font-weight:900;
   padding:18px 24px;border-radius:50px;width:100%;border:none;
   cursor:pointer;text-decoration:none;letter-spacing:.02em;
-  box-shadow:0 0 28px rgba(168,85,247,.5);
+  box-shadow:0 4px 24px rgba(255,98,0,.4);
 }
 .btn-line-green{
   background:linear-gradient(90deg,#06c755,#00a649);
-  box-shadow:0 0 28px rgba(6,199,85,.4);
+  box-shadow:0 4px 24px rgba(6,199,85,.4);
 }
 
 /* ====== HERO ====== */
 .hero{
-  background:linear-gradient(180deg,#08081a 0%,#180928 60%,#0a0a12 100%);
-  padding:40px 20px 32px;
+  background:#ffffff;
+  padding:36px 20px 0;
   position:relative;overflow:hidden;
   text-align:center;
 }
 .hero::before{
   content:'';position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(124,58,237,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(124,58,237,.07) 1px,transparent 1px);
+    linear-gradient(rgba(255,98,0,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,98,0,.07) 1px,transparent 1px);
   background-size:40px 40px;pointer-events:none;
 }
-.hero-glow{
-  position:absolute;top:-80px;left:50%;transform:translateX(-50%);
-  width:340px;height:340px;
-  background:radial-gradient(ellipse,rgba(124,58,237,.25) 0%,transparent 70%);
-  pointer-events:none;
+/* Corner accent: top-right */
+.hero-corner-tr{
+  position:absolute;top:0;right:0;
+  width:120px;height:120px;
+  overflow:hidden;pointer-events:none;
 }
-.hero-inner{position:relative;z-index:1;}
-.hero-eyebrow{
-  font-size:11px;color:rgba(255,255,255,.55);
-  letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px;
+.hero-corner-tr::before,.hero-corner-tr::after{
+  content:'';position:absolute;
+  right:-35px;top:-35px;
+  width:18px;height:220px;
+  background:var(--orange);
+  transform-origin:50% 50%;
+}
+.hero-corner-tr::before{transform:rotate(45deg) translateX(-26px);}
+.hero-corner-tr::after{transform:rotate(45deg) translateX(2px);opacity:.55;}
+/* Corner accent: bottom-left */
+.hero-corner-bl{
+  position:absolute;bottom:0;left:0;
+  width:120px;height:120px;
+  overflow:hidden;pointer-events:none;
+}
+.hero-corner-bl::before,.hero-corner-bl::after{
+  content:'';position:absolute;
+  left:-35px;bottom:-35px;
+  width:18px;height:220px;
+  background:var(--orange);
+  transform-origin:50% 50%;
+}
+.hero-corner-bl::before{transform:rotate(45deg) translateX(-26px);}
+.hero-corner-bl::after{transform:rotate(45deg) translateX(2px);opacity:.55;}
+
+.hero-inner{position:relative;z-index:1;padding-bottom:0;}
+.hero-tagline-box{
+  display:inline-block;
+  border:2px solid #111;border-radius:4px;
+  padding:5px 14px;font-size:13px;font-weight:700;
+  color:#111;margin-bottom:20px;letter-spacing:.02em;
 }
 .hero-h1{
-  font-size:38px;font-weight:900;line-height:1.15;
-  letter-spacing:-.02em;margin-bottom:10px;
+  font-size:52px;font-weight:900;line-height:1.1;
+  letter-spacing:-.03em;margin-bottom:4px;
 }
-.hero-h1 .l1{color:#fff;}
-.hero-h1 .l2{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;}
-.hero-pills{display:flex;flex-direction:column;gap:9px;margin-bottom:28px;}
-.hero-pill{
-  background:rgba(124,58,237,.18);border:1px solid var(--border);
-  border-radius:50px;padding:11px 20px;font-size:14px;font-weight:700;
+.hero-h1 .l1{color:#111;display:block;}
+.hero-h1 .l2{color:#111;display:block;font-size:30px;font-weight:900;letter-spacing:-.01em;}
+.hero-badge{text-align:center;margin:12px 0 20px;}
+.hero-badge span{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-size:15px;font-weight:900;padding:7px 22px;
+  border-radius:4px;letter-spacing:.04em;
 }
-.hero-pill .hl{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-notice{font-size:12px;color:rgba(255,255,255,.45);margin-top:14px;}
+.hero-icons-row{
+  display:flex;align-items:stretch;
+  border-top:1px solid rgba(0,0,0,.1);
+  border-bottom:1px solid rgba(0,0,0,.1);
+  margin-bottom:22px;padding:14px 0;
+}
+.hero-icon-item{flex:1;text-align:center;padding:0 4px;}
+.hero-icon-sep{width:1px;background:rgba(0,0,0,.1);flex-shrink:0;}
+.hero-icon-emoji{font-size:26px;margin-bottom:6px;}
+.hero-icon-label{font-size:11px;line-height:1.45;color:#444;}
+.hero-icon-label strong{color:var(--orange);font-weight:700;display:block;}
+.hero-bottom-bar{
+  background:var(--gh);color:#fff;
+  padding:12px 20px;margin:22px -20px 0;
+  font-size:13px;text-align:center;line-height:1.7;
+}
+.hero-bottom-bar strong{font-size:15px;font-weight:900;}
+.hero-notice{font-size:12px;color:rgba(0,0,0,.4);margin-top:14px;}
 
-/* ====== CTA BLOCK (light) ====== */
-.cta-wrap{background:#f4f4f8;padding:28px 20px;}
-.cta-box{background:#fff;border-radius:16px;padding:28px 20px;}
+/* ====== CTA BLOCK ====== */
+.cta-wrap{background:#f5f5f5;padding:28px 20px;}
+.cta-box{background:#fff;border-radius:16px;padding:28px 20px;border:1px solid rgba(255,98,0,.15);}
 .cta-lead{font-size:15px;color:#333;text-align:center;line-height:1.7;margin-bottom:20px;}
-.cta-lead strong{color:#7c3aed;text-decoration:underline;}
+.cta-lead strong{color:var(--orange);text-decoration:underline;}
 .cta-notes{font-size:11px;color:#999;margin-top:16px;line-height:2;}
 
 /* ====== LEARN ====== */
-.learn{background:linear-gradient(180deg,#0a0a12,#130625,#0a0a12);padding:48px 20px;}
-.sec-title{font-size:26px;font-weight:900;text-align:center;line-height:1.35;margin-bottom:28px;}
+.learn{background:#ffffff;padding:48px 20px;}
+.sec-title{font-size:26px;font-weight:900;text-align:center;line-height:1.35;margin-bottom:28px;color:#111;}
 .learn-box{
-  background:rgba(10,10,30,.9);border:1px solid rgba(168,85,247,.5);
+  background:#fff;border:1px solid var(--border);
   border-radius:16px;padding:20px 18px;position:relative;overflow:hidden;
+  box-shadow:0 2px 12px rgba(255,98,0,.06);
 }
 .learn-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g);}
-.learn-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));}
-.learn-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(168,85,247,.18);}
+.learn-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gh);}
+.learn-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,98,0,.1);}
 .learn-item:last-child{border-bottom:none;}
 .lcheck{
   width:24px;height:24px;flex-shrink:0;
-  background:var(--g);border-radius:50%;
+  background:var(--g);border-radius:50%;color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-size:13px;font-weight:900;margin-top:1px;
 }
-.ltext{font-size:14px;line-height:1.65;}
+.ltext{font-size:14px;line-height:1.65;color:#333;}
 .ltext strong{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;font-size:15px;}
 
 /* ====== PROBLEM ====== */
-.problem{background:#0d0d18;padding:48px 20px;}
-.problem-eyebrow{font-size:13px;color:rgba(255,255,255,.55);text-align:center;margin-bottom:8px;}
-.problem-title{font-size:23px;font-weight:900;text-align:center;line-height:1.4;margin-bottom:24px;}
+.problem{background:#f8f8f8;padding:48px 20px;}
+.problem-eyebrow{font-size:13px;color:rgba(0,0,0,.5);text-align:center;margin-bottom:8px;}
+.problem-title{font-size:23px;font-weight:900;text-align:center;line-height:1.4;margin-bottom:24px;color:#111;}
 .photo-ph{
   width:100%;height:200px;
-  background:linear-gradient(135deg,#1a0a2e,#0a0018);
-  border:1px solid var(--border);border-radius:12px;
+  background:#ececec;
+  border:1px solid rgba(255,98,0,.2);border-radius:12px;
   display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.25);font-size:13px;margin-bottom:24px;
+  color:rgba(0,0,0,.3);font-size:13px;margin-bottom:24px;
 }
-.problem-body{font-size:15px;line-height:1.95;color:rgba(255,255,255,.85);}
+.problem-body{font-size:15px;line-height:1.95;color:#444;}
 .problem-body strong{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;}
 .problem-body p+p{margin-top:16px;}
 
 /* ====== TARGET ====== */
-.target{background:linear-gradient(180deg,#0d0d18,#1a0630);padding:48px 20px;}
+.target{background:#ffffff;padding:48px 20px;}
 .target-box{
-  background:linear-gradient(135deg,rgba(168,85,247,.13),rgba(236,72,153,.08));
+  background:linear-gradient(135deg,rgba(255,98,0,.07),rgba(255,140,0,.04));
   border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:20px;
 }
-.target-copy{font-size:15px;line-height:1.95;color:rgba(255,255,255,.9);}
+.target-copy{font-size:15px;line-height:1.95;color:#333;}
 .target-copy strong{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;}
 .target-copy p+p{margin-top:14px;}
 
 /* ====== MISCONCEPTIONS ====== */
-.miscon{background:linear-gradient(180deg,#0a0a20,#15082e);padding:48px 20px;}
+.miscon{background:#f8f8f8;padding:48px 20px;}
 .miscon-img{
   width:100%;height:200px;
-  background:linear-gradient(135deg,#1a0a2e,#0a0018);
-  border:1px solid var(--border);border-radius:12px;
+  background:#ececec;
+  border:1px solid rgba(255,98,0,.2);border-radius:12px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:10px;padding:16px;margin-bottom:8px;position:relative;
 }
 .mlabel{
-  background:rgba(10,10,30,.88);border:1px solid rgba(236,72,153,.55);
+  background:#fff;border:1px solid rgba(255,98,0,.4);
   border-radius:8px;padding:7px 11px;font-size:11px;font-weight:700;
-  line-height:1.4;text-align:center;
+  line-height:1.4;text-align:center;color:#333;
 }
 .miscon-labels{display:flex;flex-direction:column;gap:8px;align-items:center;width:100%;}
 
 /* ====== REASONS ====== */
-.reasons{background:linear-gradient(180deg,#15082e,#0a0a12);padding:48px 20px;}
-.reasons-head{text-align:center;font-size:32px;font-weight:900;line-height:1.15;}
+.reasons{background:#ffffff;padding:48px 20px;}
+.reasons-head{text-align:center;font-size:32px;font-weight:900;line-height:1.15;color:#111;}
 .reasons-head .big{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.reasons-sub{text-align:center;font-size:20px;font-weight:900;margin:8px 0 28px;color:rgba(255,255,255,.9);}
+.reasons-sub{text-align:center;font-size:20px;font-weight:900;margin:8px 0 28px;color:#444;}
 .rcard{
-  background:rgba(124,58,237,.1);border:1px solid var(--border);
+  background:#fff;border:1px solid var(--border);
   border-radius:14px;overflow:hidden;margin-bottom:18px;
+  box-shadow:0 2px 12px rgba(255,98,0,.07);
 }
-.rcard-hd{background:var(--g);padding:7px 16px;font-size:13px;font-weight:700;letter-spacing:.08em;}
+.rcard-hd{background:var(--g);padding:7px 16px;font-size:13px;font-weight:700;letter-spacing:.08em;color:#fff;}
 .rcard-body{padding:16px;display:grid;grid-template-columns:1fr 80px;gap:12px;align-items:start;}
-.rcard-title{font-size:16px;font-weight:900;line-height:1.4;margin-bottom:7px;}
+.rcard-title{font-size:16px;font-weight:900;line-height:1.4;margin-bottom:7px;color:#111;}
 .rcard-title span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.rcard-desc{font-size:12px;color:rgba(255,255,255,.68);line-height:1.75;}
+.rcard-desc{font-size:12px;color:#666;line-height:1.75;}
 .rcard-img{
-  background:linear-gradient(135deg,#1a0a2e,#0a0018);border:1px solid var(--border);
+  background:rgba(255,98,0,.07);border:1px solid rgba(255,98,0,.18);
   border-radius:8px;height:90px;
   display:flex;align-items:center;justify-content:center;
   font-size:22px;
 }
 
 /* ====== CURRICULUM ====== */
-.curriculum{background:#0a0a12;padding:48px 20px;}
+.curriculum{background:#f8f8f8;padding:48px 20px;}
 .curri-head{text-align:center;margin-bottom:24px;}
 .curri-badge{
   display:inline-block;background:var(--g);color:#fff;
   font-size:11px;font-weight:700;padding:3px 14px;border-radius:20px;margin-bottom:10px;
 }
-.curri-title{font-size:26px;font-weight:900;line-height:1.3;}
+.curri-title{font-size:26px;font-weight:900;line-height:1.3;color:#111;}
 .curri-title .ac{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.curri-squeeze{text-align:center;font-size:18px;font-weight:900;margin-bottom:24px;}
+.curri-squeeze{text-align:center;font-size:18px;font-weight:900;margin-bottom:24px;color:#111;}
 .curri-squeeze .big{font-size:40px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .curri-items{display:flex;flex-direction:column;gap:10px;}
 .curri-item{
   display:flex;gap:12px;align-items:flex-start;
-  background:rgba(124,58,237,.1);border:1px solid rgba(168,85,247,.28);
+  background:#fff;border:1px solid rgba(255,98,0,.18);
   border-radius:10px;padding:13px;
 }
 .cnum{
@@ -195,146 +239,163 @@ a{color:inherit;text-decoration:none;}
   width:28px;height:28px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.ctext{font-size:14px;line-height:1.65;color:rgba(255,255,255,.9);}
+.ctext{font-size:14px;line-height:1.65;color:#333;}
 
 /* ====== 3 STEP ====== */
-.steps{background:linear-gradient(180deg,#0a0a12,#13062a);padding:48px 20px;}
-.step-title{text-align:center;font-size:24px;font-weight:900;margin-bottom:28px;line-height:1.3;}
+.steps{background:#ffffff;padding:48px 20px;}
+.step-title{text-align:center;font-size:24px;font-weight:900;margin-bottom:28px;line-height:1.3;color:#111;}
 .step-title .big{font-size:36px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .scard{
-  background:rgba(124,58,237,.1);border:1px solid var(--border);
+  background:#fff;border:1px solid var(--border);
   border-radius:12px;padding:18px;display:flex;gap:14px;align-items:center;
-  margin-bottom:10px;
+  margin-bottom:10px;box-shadow:0 2px 10px rgba(255,98,0,.06);
 }
 .snum{
-  width:48px;height:48px;flex-shrink:0;background:var(--g);border-radius:50%;
+  width:48px;height:48px;flex-shrink:0;background:var(--g);border-radius:50%;color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-size:11px;font-weight:900;line-height:1.3;text-align:center;
 }
-.scon-title{font-size:16px;font-weight:900;margin-bottom:4px;}
-.scon-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;}
-.sconnector{text-align:center;color:rgba(168,85,247,.55);font-size:22px;margin-bottom:10px;}
-.step-note{text-align:center;font-size:13px;color:rgba(255,255,255,.55);margin-top:20px;line-height:1.9;}
+.scon-title{font-size:16px;font-weight:900;margin-bottom:4px;color:#111;}
+.scon-desc{font-size:13px;color:#666;line-height:1.6;}
+.sconnector{text-align:center;color:rgba(255,98,0,.45);font-size:22px;margin-bottom:10px;}
+.step-note{text-align:center;font-size:13px;color:#666;margin-top:20px;line-height:1.9;}
 .step-note span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;}
 
 /* ====== 5 FEATURES ====== */
-.features{background:#0d0d18;padding:48px 20px;}
-.feat-bg{font-size:56px;font-weight:900;color:rgba(255,255,255,.03);text-align:center;line-height:1;margin-bottom:-16px;letter-spacing:.15em;}
-.feat-title{font-size:24px;font-weight:900;text-align:center;margin-bottom:28px;line-height:1.35;position:relative;}
+.features{background:#f8f8f8;padding:48px 20px;}
+.feat-bg{font-size:56px;font-weight:900;color:rgba(0,0,0,.03);text-align:center;line-height:1;margin-bottom:-16px;letter-spacing:.15em;}
+.feat-title{font-size:24px;font-weight:900;text-align:center;margin-bottom:28px;line-height:1.35;position:relative;color:#111;}
 .feat-title span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .feat-cards{display:flex;flex-direction:column;gap:10px;}
 .fcard{
-  background:linear-gradient(135deg,rgba(124,58,237,.14),rgba(236,72,153,.07));
+  background:#fff;
   border:1px solid var(--border);border-radius:12px;
   padding:14px 18px;display:flex;gap:14px;align-items:flex-start;
   position:relative;overflow:hidden;
+  box-shadow:0 2px 10px rgba(255,98,0,.06);
 }
 .fcard::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--g);}
 .fnum-wrap{flex-shrink:0;text-align:center;}
-.feyebrow{font-size:9px;color:rgba(255,255,255,.45);white-space:nowrap;}
+.feyebrow{font-size:9px;color:#999;white-space:nowrap;}
 .fnum{font-size:44px;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .fcon-eye{font-size:10px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;margin-bottom:3px;}
-.fcon-title{font-size:15px;font-weight:900;line-height:1.4;}
+.fcon-title{font-size:15px;font-weight:900;line-height:1.4;color:#111;}
 
 /* ====== INSTRUCTOR ====== */
-.instructor{background:linear-gradient(180deg,#130625,#0a0a12);padding:48px 20px;}
+.instructor{background:#ffffff;padding:48px 20px;}
 .instr-title{
   background:var(--g);color:#fff;font-size:17px;font-weight:900;
   padding:10px 20px;border-radius:8px;margin-bottom:22px;text-align:center;
 }
-.instr-bio{font-size:14px;line-height:1.95;color:rgba(255,255,255,.85);margin-bottom:28px;}
+.instr-bio{font-size:14px;line-height:1.95;color:#444;margin-bottom:28px;}
 .instr-strength-head{
   font-size:15px;font-weight:900;padding:10px 16px;
-  background:var(--g);border-radius:8px;margin-bottom:14px;
+  background:var(--g);color:#fff;border-radius:8px;margin-bottom:14px;
 }
 .istrength-item{margin-bottom:16px;}
 .ist-title{font-size:18px;font-weight:900;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
-.ist-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7;padding-bottom:16px;border-bottom:1px solid rgba(168,85,247,.18);}
+.ist-desc{font-size:13px;color:#666;line-height:1.7;padding-bottom:16px;border-bottom:1px solid rgba(255,98,0,.12);}
 .istrength-item:last-child .ist-desc{border-bottom:none;}
 
 /* ====== FAQ ====== */
-.faq{background:linear-gradient(180deg,#0a0a12,#15082e,#0a0a12);padding:48px 20px;}
-.faq-bg{font-size:72px;font-weight:900;color:rgba(255,255,255,.025);text-align:center;line-height:1;margin-bottom:-24px;}
-.faq-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:32px;position:relative;}
+.faq{background:#f8f8f8;padding:48px 20px;}
+.faq-bg{font-size:72px;font-weight:900;color:rgba(0,0,0,.025);text-align:center;line-height:1;margin-bottom:-24px;}
+.faq-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:32px;position:relative;color:#111;}
 .faq-item{margin-bottom:24px;}
 .faq-q{
-  background:var(--g);border-radius:50px;padding:11px 18px;
+  background:var(--g);border-radius:50px;padding:11px 18px;color:#fff;
   font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:14px;
 }
 .fqicon{font-style:italic;font-size:18px;font-weight:900;flex-shrink:0;}
-.faq-a{padding:0 6px;font-size:14px;line-height:1.95;color:rgba(255,255,255,.82);}
+.faq-a{padding:0 6px;font-size:14px;line-height:1.95;color:#444;}
 .faq-a p+p{margin-top:12px;}
 
 /* ====== HOW TO (3STEP登録) ====== */
-.howto{background:linear-gradient(180deg,#0a0a12,#13062a);padding:48px 20px;}
-.howto-small{text-align:center;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;}
-.howto-title{text-align:center;font-size:26px;font-weight:900;margin-bottom:28px;line-height:1.3;}
+.howto{background:#ffffff;padding:48px 20px;}
+.howto-small{text-align:center;font-size:13px;color:rgba(0,0,0,.45);margin-bottom:8px;}
+.howto-title{text-align:center;font-size:26px;font-weight:900;margin-bottom:28px;line-height:1.3;color:#111;}
 .howto-title .big{font-size:36px;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .how-steps{
-  background:rgba(124,58,237,.1);border:1px solid var(--border);border-radius:16px;
+  background:#fff;border:1px solid var(--border);border-radius:16px;
   padding:22px 16px;display:flex;align-items:center;justify-content:space-around;
   gap:6px;margin-bottom:28px;
+  box-shadow:0 2px 12px rgba(255,98,0,.07);
 }
 .hstep{flex:1;text-align:center;}
 .hnum{
-  width:34px;height:34px;background:var(--g);border-radius:50%;
+  width:34px;height:34px;background:var(--g);border-radius:50%;color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-weight:900;font-size:15px;margin:0 auto 7px;
 }
 .hicon{font-size:28px;margin-bottom:6px;}
-.htext{font-size:11px;line-height:1.45;color:rgba(255,255,255,.78);}
-.harrow{color:rgba(168,85,247,.55);font-size:20px;}
+.htext{font-size:11px;line-height:1.45;color:#555;}
+.harrow{color:rgba(255,98,0,.45);font-size:20px;}
 
 /* ====== BOTTOM CTA ====== */
-.btm-cta{background:#f4f4f8;padding:36px 20px;}
+.btm-cta{background:#f5f5f5;padding:36px 20px;}
 .btm-title{font-size:15px;color:#333;text-align:center;margin-bottom:20px;line-height:1.75;}
-.btm-title strong{color:#7c3aed;text-decoration:underline;}
+.btm-title strong{color:var(--orange);text-decoration:underline;}
 .btm-notes{font-size:11px;color:#999;margin-top:18px;line-height:2.1;}
 
 /* ====== SERVICE ====== */
-.service{background:linear-gradient(180deg,#0a0a12,#15082e);padding:48px 20px;}
+.service{background:#ffffff;padding:48px 20px;}
 .svc-title{
   background:var(--g);color:#fff;font-size:14px;font-weight:700;
   padding:8px 20px;border-radius:8px;text-align:center;margin-bottom:20px;
 }
-.svc-name{text-align:center;font-size:20px;font-weight:900;margin-bottom:22px;line-height:1.45;}
+.svc-name{text-align:center;font-size:20px;font-weight:900;margin-bottom:22px;line-height:1.45;color:#111;}
 .svc-table{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.svc-row{display:grid;grid-template-columns:2fr 3fr;border-bottom:1px solid rgba(168,85,247,.18);}
+.svc-row{display:grid;grid-template-columns:2fr 3fr;border-bottom:1px solid rgba(255,98,0,.1);}
 .svc-row:last-child{border-bottom:none;}
-.svc-label{font-size:12px;color:rgba(255,255,255,.45);padding:13px 14px;border-right:1px solid rgba(168,85,247,.18);background:rgba(124,58,237,.07);}
-.svc-val{font-size:14px;font-weight:700;padding:13px 14px;}
+.svc-label{font-size:12px;color:#888;padding:13px 14px;border-right:1px solid rgba(255,98,0,.1);background:rgba(255,98,0,.04);}
+.svc-val{font-size:14px;font-weight:700;padding:13px 14px;color:#333;}
 
 /* ====== FOOTER ====== */
 footer{
-  background:#050508;padding:24px 20px;text-align:center;
-  font-size:12px;color:rgba(255,255,255,.28);
-  border-top:1px solid rgba(168,85,247,.15);
+  background:#111111;padding:24px 20px;text-align:center;
+  font-size:12px;color:rgba(255,255,255,.4);
+  border-top:3px solid var(--orange);
 }
-footer a{color:rgba(255,255,255,.35);}
+footer a{color:rgba(255,255,255,.45);}
 </style>
 </head>
 <body>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-glow"></div>
+  <div class="hero-corner-tr"></div>
+  <div class="hero-corner-bl"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">Path AI Boot Camp</p>
+    <div class="hero-tagline-box">AIで稼ぐ力を、最短で手に入れる。</div>
     <h1 class="hero-h1">
-      <span class="l1">AIで稼ぐ力を</span><br>
-      <span class="l2">最短で手に入れる</span>
+      <span class="l1">Path AI</span>
+      <span class="l2">ブートキャンプ</span>
     </h1>
-    <p class="hero-sub">マンツーマン × 実務特化 × 案件獲得まで伴走</p>
-    <div class="hero-pills">
-      <div class="hero-pill"><span class="hl">副業で月収UP</span>できるスキルが身につく</div>
-      <div class="hero-pill"><span class="hl">マンツーマン</span>で完全個別サポート</div>
-      <div class="hero-pill"><span class="hl">案件獲得まで</span>一緒に走りきる</div>
+    <div class="hero-badge"><span>AIで稼ぐスクール</span></div>
+    <div class="hero-icons-row">
+      <div class="hero-icon-item">
+        <div class="hero-icon-emoji">📈</div>
+        <div class="hero-icon-label">AIを武器にして<br><strong>収益を生み出す</strong></div>
+      </div>
+      <div class="hero-icon-sep"></div>
+      <div class="hero-icon-item">
+        <div class="hero-icon-emoji">💴</div>
+        <div class="hero-icon-label">実践重視で<br><strong>即収益化を目指す</strong></div>
+      </div>
+      <div class="hero-icon-sep"></div>
+      <div class="hero-icon-item">
+        <div class="hero-icon-emoji">🚀</div>
+        <div class="hero-icon-label">副業・独立・フリーランス<br><strong>理想の働き方を実現</strong></div>
+      </div>
     </div>
     <a href="#" class="btn-line">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.08 2 11.12c0 2.73 1.3 5.17 3.34 6.85L4.5 22l4.2-2.2c1.07.3 2.2.46 3.3.46 5.52 0 10-4.08 10-9.12S17.52 2 12 2z"/></svg>
       まずLINEで話を聞く（無料）
     </a>
     <p class="hero-notice">⚡ 今月の無料相談枠：残り7名 · しつこい勧誘なし</p>
+    <div class="hero-bottom-bar">
+      学ぶだけで終わらない。<strong>AIで稼ぐ未来へ。</strong>
+    </div>
   </div>
 </section>
 
@@ -686,39 +747,39 @@ footer a{color:rgba(255,255,255,.35);}
 <section class="service">
   <p class="svc-title">本サービスの位置付け</p>
 
-  <p style="font-size:13px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:8px;">無料</p>
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(236,72,153,.1));border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
-    <p style="font-size:14px;font-weight:700;text-align:center;color:rgba(255,255,255,.6);margin-bottom:14px;">無料LINE相談</p>
+  <p style="font-size:13px;color:#888;text-align:center;margin-bottom:8px;">無料</p>
+  <div style="background:#fff;border:2px solid var(--orange);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 16px rgba(255,98,0,.1);">
+    <p style="font-size:14px;font-weight:700;text-align:center;color:#888;margin-bottom:14px;">無料LINE相談</p>
     <p style="font-size:22px;font-weight:900;text-align:center;margin-bottom:16px;line-height:1.3;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Path AI Boot Camp<br>無料30分相談</p>
-    <div style="border-top:1px solid rgba(168,85,247,.2);padding-top:14px;display:flex;flex-direction:column;gap:10px;">
-      <div style="text-align:center;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講方法</span><br><span style="font-size:15px;font-weight:700;">LINEで予約 → Zoomで実施</span></div>
-      <div style="text-align:center;border-top:1px solid rgba(168,85,247,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講費用</span><br><span style="font-size:22px;font-weight:900;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">無料</span></div>
-      <div style="text-align:center;border-top:1px solid rgba(168,85,247,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">内容</span><br><span style="font-size:14px;font-weight:700;">現状ヒアリング・ロードマップ作成・質問何でもOK</span></div>
+    <div style="border-top:1px solid rgba(255,98,0,.15);padding-top:14px;display:flex;flex-direction:column;gap:10px;">
+      <div style="text-align:center;"><span style="font-size:11px;color:#999;">受講方法</span><br><span style="font-size:15px;font-weight:700;color:#111;">LINEで予約 → Zoomで実施</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(255,98,0,.12);padding-top:10px;"><span style="font-size:11px;color:#999;">受講費用</span><br><span style="font-size:22px;font-weight:900;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">無料</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(255,98,0,.12);padding-top:10px;"><span style="font-size:11px;color:#999;">内容</span><br><span style="font-size:14px;font-weight:700;color:#111;">現状ヒアリング・ロードマップ作成・質問何でもOK</span></div>
     </div>
   </div>
 
-  <p style="font-size:13px;color:rgba(255,255,255,.45);text-align:center;margin-bottom:8px;">有料</p>
-  <div style="background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(124,58,237,.1));border:1px solid rgba(236,72,153,.4);border-radius:12px;padding:20px;margin-bottom:0;">
-    <p style="font-size:14px;font-weight:700;text-align:center;color:rgba(255,255,255,.6);margin-bottom:14px;">有料プログラム</p>
-    <p style="font-size:22px;font-weight:900;text-align:center;margin-bottom:16px;line-height:1.3;">Path AI Boot Camp<br><span style="background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">マンツーマンプログラム</span></p>
-    <div style="border-top:1px solid rgba(236,72,153,.2);padding-top:14px;display:flex;flex-direction:column;gap:10px;">
-      <div style="text-align:center;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講方法</span><br><span style="font-size:15px;font-weight:700;">オンライン（マンツーマン）</span></div>
-      <div style="text-align:center;border-top:1px solid rgba(236,72,153,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">受講費用</span><br><span style="font-size:15px;font-weight:700;">プランによって異なります</span></div>
-      <div style="text-align:center;border-top:1px solid rgba(236,72,153,.15);padding-top:10px;"><span style="font-size:11px;color:rgba(255,255,255,.4);">内容</span><br><span style="font-size:14px;font-weight:700;">AI副業実践・案件獲得まで伴走サポート</span></div>
+  <p style="font-size:13px;color:#888;text-align:center;margin-bottom:8px;">有料</p>
+  <div style="background:#fff8f4;border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:0;">
+    <p style="font-size:14px;font-weight:700;text-align:center;color:#888;margin-bottom:14px;">有料プログラム</p>
+    <p style="font-size:22px;font-weight:900;text-align:center;margin-bottom:16px;line-height:1.3;color:#111;">Path AI Boot Camp<br><span style="background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">マンツーマンプログラム</span></p>
+    <div style="border-top:1px solid rgba(255,98,0,.15);padding-top:14px;display:flex;flex-direction:column;gap:10px;">
+      <div style="text-align:center;"><span style="font-size:11px;color:#999;">受講方法</span><br><span style="font-size:15px;font-weight:700;color:#111;">オンライン（マンツーマン）</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(255,98,0,.12);padding-top:10px;"><span style="font-size:11px;color:#999;">受講費用</span><br><span style="font-size:15px;font-weight:700;color:#111;">プランによって異なります</span></div>
+      <div style="text-align:center;border-top:1px solid rgba(255,98,0,.12);padding-top:10px;"><span style="font-size:11px;color:#999;">内容</span><br><span style="font-size:14px;font-weight:700;color:#111;">AI副業実践・案件獲得まで伴走サポート</span></div>
     </div>
   </div>
 </section>
 
 <!-- ===== COMPANY ===== -->
-<section style="background:#1a1a2e;padding:48px 20px;">
-  <h2 style="font-size:24px;font-weight:900;text-align:center;margin-bottom:28px;">運営会社</h2>
-  <div style="font-size:14px;line-height:2.2;color:rgba(255,255,255,.8);">
+<section style="background:#f8f8f8;padding:48px 20px;">
+  <h2 style="font-size:24px;font-weight:900;text-align:center;margin-bottom:28px;color:#111;">運営会社</h2>
+  <div style="font-size:14px;line-height:2.2;color:#444;">
     <p>会社名：※要追記</p>
     <p>設立：※要追記</p>
     <p>代表責任者：福安 愛偉良</p>
     <p>所在地：※要追記</p>
   </div>
-  <div style="width:100%;height:140px;background:linear-gradient(135deg,#1a0a2e,#0a0018);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:13px;margin-top:20px;">📷 会社・オフィス写真（要追加）</div>
+  <div style="width:100%;height:140px;background:#ececec;border:1px solid rgba(255,98,0,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.3);font-size:13px;margin-top:20px;">📷 会社・オフィス写真（要追加）</div>
 </section>
 
 <!-- ===== FOOTER ===== -->
