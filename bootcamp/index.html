@@ -393,6 +393,81 @@ footer{
   border-top:3px solid var(--orange);
 }
 footer a{color:rgba(255,255,255,.45);}
+
+/* ====== SIDE FX ====== */
+body{background:#0a0a0a;}
+.side-fx{
+  position:fixed;inset:0;pointer-events:none;z-index:1000;overflow:hidden;
+}
+.sfx{position:absolute;top:0;bottom:0;overflow:hidden;}
+.sfx-l{left:0;right:calc(50% + 240px);}
+.sfx-r{right:0;left:calc(50% + 240px);}
+
+@keyframes sfxScan{
+  0%{top:100%;}100%{top:-2px;}
+}
+@keyframes sfxFloat{
+  0%{bottom:-10px;opacity:0;}
+  15%{opacity:.9;}85%{opacity:.3;}
+  100%{bottom:105%;opacity:0;}
+}
+@keyframes sfxLinePulse{
+  0%,100%{opacity:.12;}50%{opacity:.6;}
+}
+@keyframes sfxGlow{
+  0%,100%{opacity:.3;}50%{opacity:.7;}
+}
+
+.sfx-scan{
+  position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,#ff6200 50%,transparent 100%);
+  box-shadow:0 0 12px 4px rgba(255,98,0,.5);
+  animation:sfxScan 5s linear infinite;
+}
+.sfx-r .sfx-scan{animation-delay:-2.5s;}
+
+.sfx-dot{
+  position:absolute;width:3px;height:3px;
+  background:#ff6200;border-radius:50%;
+  box-shadow:0 0 8px 3px rgba(255,98,0,.7);
+  animation:sfxFloat linear infinite;
+}
+.sfx-d1{left:20%;animation-duration:9s;animation-delay:0s;}
+.sfx-d2{left:55%;animation-duration:6s;animation-delay:-2s;}
+.sfx-d3{left:75%;animation-duration:11s;animation-delay:-5s;}
+.sfx-d4{left:38%;animation-duration:7.5s;animation-delay:-3.5s;}
+
+.sfx-hline{
+  position:absolute;height:1px;
+  animation:sfxLinePulse 3s ease-in-out infinite;
+}
+.sfx-l .sfx-hline{
+  right:0;
+  background:linear-gradient(270deg,rgba(255,98,0,.75) 0%,transparent 100%);
+}
+.sfx-r .sfx-hline{
+  left:0;
+  background:linear-gradient(90deg,rgba(255,98,0,.75) 0%,transparent 100%);
+}
+.sfx-h1{width:75%;top:12%;animation-delay:0s;}
+.sfx-h2{width:50%;top:28%;animation-delay:-1s;}
+.sfx-h3{width:85%;top:47%;animation-delay:-2s;}
+.sfx-h4{width:60%;top:66%;animation-delay:-.5s;}
+.sfx-h5{width:70%;top:82%;animation-delay:-1.5s;}
+.sfx-h6{width:40%;top:93%;animation-delay:-.8s;}
+
+.sfx-glow{
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,98,0,.15) 0%,transparent 70%);
+  animation:sfxGlow 4s ease-in-out infinite;
+}
+.sfx-g1{width:160px;height:160px;top:20%;left:-40px;animation-delay:0s;}
+.sfx-g2{width:120px;height:120px;top:60%;right:-20px;animation-delay:-2s;}
+.sfx-r .sfx-g1{left:auto;right:-40px;}
+.sfx-r .sfx-g2{right:auto;left:-20px;}
+
+@media(max-width:540px){.side-fx{display:none;}}
 </style>
 </head>
 <body>
@@ -832,6 +907,40 @@ footer a{color:rgba(255,255,255,.45);}
     <span class="btn-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#ff4500" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     無料ライン相談
   </a>
+</div>
+
+<!-- ===== SIDE FX ===== -->
+<div class="side-fx" aria-hidden="true">
+  <div class="sfx sfx-l">
+    <div class="sfx-scan"></div>
+    <div class="sfx-dot sfx-d1"></div>
+    <div class="sfx-dot sfx-d2"></div>
+    <div class="sfx-dot sfx-d3"></div>
+    <div class="sfx-dot sfx-d4"></div>
+    <div class="sfx-hline sfx-h1"></div>
+    <div class="sfx-hline sfx-h2"></div>
+    <div class="sfx-hline sfx-h3"></div>
+    <div class="sfx-hline sfx-h4"></div>
+    <div class="sfx-hline sfx-h5"></div>
+    <div class="sfx-hline sfx-h6"></div>
+    <div class="sfx-glow sfx-g1"></div>
+    <div class="sfx-glow sfx-g2"></div>
+  </div>
+  <div class="sfx sfx-r">
+    <div class="sfx-scan"></div>
+    <div class="sfx-dot sfx-d1"></div>
+    <div class="sfx-dot sfx-d2"></div>
+    <div class="sfx-dot sfx-d3"></div>
+    <div class="sfx-dot sfx-d4"></div>
+    <div class="sfx-hline sfx-h1"></div>
+    <div class="sfx-hline sfx-h2"></div>
+    <div class="sfx-hline sfx-h3"></div>
+    <div class="sfx-hline sfx-h4"></div>
+    <div class="sfx-hline sfx-h5"></div>
+    <div class="sfx-hline sfx-h6"></div>
+    <div class="sfx-glow sfx-g1"></div>
+    <div class="sfx-glow sfx-g2"></div>
+  </div>
 </div>
 
 </body>
