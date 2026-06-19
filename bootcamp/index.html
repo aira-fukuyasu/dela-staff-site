@@ -360,14 +360,27 @@ a{color:inherit;text-decoration:none;}
 .fixed-cta{
   position:fixed;bottom:0;left:50%;transform:translateX(-50%);
   width:100%;max-width:480px;
-  padding:12px 16px 20px;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(8px);
-  border-top:1px solid rgba(255,98,0,.15);
-  box-shadow:0 -4px 20px rgba(0,0,0,.08);
+  padding:0;
+  background:none;
+  border:none;
+  box-shadow:none;
   z-index:999;
 }
-.fixed-cta .btn-line{font-size:16px;padding:15px 24px;}
+@keyframes shimmer{
+  0%{background-position:200% center;}
+  100%{background-position:-200% center;}
+}
+@keyframes ctapulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,80,0,.5);}
+  50%{box-shadow:0 0 0 8px rgba(255,80,0,.0);}
+}
+.fixed-cta .btn-line{
+  font-size:17px;padding:18px 24px;border-radius:0;
+  background:linear-gradient(90deg,#ff3500 0%,#ff9500 40%,#ffcc44 60%,#ff9500 80%,#ff3500 100%);
+  background-size:200% auto;
+  animation:shimmer 2.5s linear infinite, ctapulse 2s ease-in-out infinite;
+  box-shadow:none;
+}
 
 /* ====== FOOTER ====== */
 footer{
