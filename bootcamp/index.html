@@ -467,7 +467,22 @@ body{background:#0a0a0a;}
 .sfx-r .sfx-g1{left:auto;right:-40px;}
 .sfx-r .sfx-g2{right:auto;left:-20px;}
 
-@media(max-width:540px){.side-fx{display:none;}}
+@keyframes sfxScanMobile{
+  0%{top:-80px;}100%{top:100%;}
+}
+@media(max-width:540px){
+  .sfx-l{left:0;right:calc(100% - 5px);}
+  .sfx-r{right:0;left:calc(100% - 5px);}
+  .sfx-dot,.sfx-hline,.sfx-glow{display:none;}
+  .sfx{background:rgba(255,98,0,.04);}
+  .sfx-scan{
+    height:100px;left:0;right:0;
+    background:linear-gradient(180deg,transparent,rgba(255,98,0,.9),transparent);
+    box-shadow:0 0 12px 4px rgba(255,98,0,.6);
+    animation:sfxScanMobile 4s linear infinite;
+  }
+  .sfx-r .sfx-scan{animation-delay:-2s;}
+}
 </style>
 </head>
 <body>
