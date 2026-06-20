@@ -415,10 +415,10 @@ a{color:inherit;text-decoration:none;}
 }
 
 /* ====== COMPANY ====== */
-.company{background:#f8f8f8;padding:48px 20px;position:relative;overflow:hidden;}
+.company{background:#111;padding:48px 20px;position:relative;overflow:hidden;}
 .company::before{
   content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,98,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,98,0,.04) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(255,98,0,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,98,0,.07) 1px,transparent 1px);
   background-size:40px 40px;pointer-events:none;
 }
 .company-eyebrow{
@@ -427,13 +427,13 @@ a{color:inherit;text-decoration:none;}
 }
 .company-title{
   font-size:26px;font-weight:900;text-align:center;
-  color:#111;margin-bottom:24px;position:relative;line-height:1.2;
+  color:#fff;margin-bottom:24px;position:relative;line-height:1.2;
 }
 .company-title span{background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .company-card{
-  background:#fff;border:1.5px solid var(--border);
+  background:rgba(255,255,255,.05);border:1.5px solid rgba(255,98,0,.3);
   border-radius:12px;overflow:hidden;position:relative;
-  box-shadow:0 2px 20px rgba(255,98,0,.08);margin-bottom:16px;
+  box-shadow:0 2px 20px rgba(255,98,0,.12);margin-bottom:16px;
 }
 .company-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
@@ -441,30 +441,19 @@ a{color:inherit;text-decoration:none;}
 }
 .company-row{
   display:grid;grid-template-columns:80px 1fr;
-  border-bottom:1px solid rgba(255,98,0,.1);
+  border-bottom:1px solid rgba(255,98,0,.15);
 }
 .company-row:last-child{border-bottom:none;}
 .company-label{
   font-size:11px;font-weight:700;color:var(--orange);
   padding:13px 12px;
-  border-right:1px solid rgba(255,98,0,.1);
-  background:rgba(255,98,0,.04);
+  border-right:1px solid rgba(255,98,0,.15);
+  background:rgba(255,98,0,.08);
   display:flex;align-items:center;
 }
 .company-val{
-  font-size:14px;font-weight:700;color:#111;
+  font-size:14px;font-weight:700;color:#fff;
   padding:13px 14px;display:flex;align-items:center;
-}
-.company-photo{
-  width:100%;height:160px;background:#f0f0f0;
-  border:1.5px solid var(--border);border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  color:rgba(0,0,0,.3);font-size:13px;position:relative;overflow:hidden;
-}
-.company-photo::before{
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,98,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,98,0,.06) 1px,transparent 1px);
-  background-size:20px 20px;
 }
 
 /* ====== FOOTER ====== */
@@ -652,22 +641,21 @@ body{background:#0a0a0a;}
   <div class="company-card">
     <div class="company-row">
       <div class="company-label">会社名</div>
-      <div class="company-val">※要追記</div>
+      <div class="company-val">株式会社DELA STAFF</div>
     </div>
     <div class="company-row">
       <div class="company-label">設立</div>
-      <div class="company-val">※要追記</div>
+      <div class="company-val">2026年</div>
     </div>
     <div class="company-row">
       <div class="company-label">代表</div>
-      <div class="company-val">福安 愛偉良</div>
+      <div class="company-val">眞西 翔太</div>
     </div>
     <div class="company-row">
       <div class="company-label">所在地</div>
-      <div class="company-val">※要追記</div>
+      <div class="company-val">東京都品川区小山5-19-5</div>
     </div>
   </div>
-  <div class="company-photo">📷 会社・オフィス写真（要追加）</div>
 </section>
 
 <!-- ===== FOOTER ===== -->
