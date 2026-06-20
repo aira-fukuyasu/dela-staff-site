@@ -398,14 +398,13 @@ a{color:inherit;text-decoration:none;}
   100%{background-position:-200% center;}
 }
 @keyframes ctapulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(255,80,0,.5);}
-  50%{box-shadow:0 0 0 8px rgba(255,80,0,.0);}
+  0%,100%{box-shadow:0 -4px 20px rgba(6,199,85,.5);}
+  50%{box-shadow:0 -6px 32px rgba(6,199,85,.9),0 0 0 6px rgba(6,199,85,.2);}
 }
 .fixed-cta .btn-line{
   font-size:17px;padding:18px 24px;border-radius:20px 20px 0 0;
-  background:linear-gradient(90deg,#ff3500 0%,#ff9500 40%,#ffcc44 60%,#ff9500 80%,#ff3500 100%);
-  background-size:200% auto;
-  animation:shimmer 2.5s linear infinite, ctapulse 2s ease-in-out infinite;
+  background:#06C755;
+  animation:ctapulse 2s ease-in-out infinite;
   box-shadow:none;
 }
 
@@ -670,7 +669,7 @@ body{background:#0a0a0a;}
 <!-- ===== FIXED BOTTOM CTA ===== -->
 <div class="fixed-cta">
   <a href="#" class="btn-line">
-    <span class="btn-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#ff4500" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="btn-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     無料ライン相談
   </a>
 </div>
