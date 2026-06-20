@@ -873,9 +873,10 @@ footer{
       <h2>AIで、稼ぐスキルと<br />伸びるチームを。</h2>
       <p>個人のスキル相談・企業のAI導入・業務提携・採用・取材まで、<br />すべてのお問い合わせを歓迎します。24時間以内に返信します。</p>
 
-      <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden><label>Bot field: <input name="bot-field" /></label></p>
+      <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="48f42e04-3a6a-4acd-a19c-adfad6cedab9" />
+        <input type="hidden" name="subject" value="【DELA STAFF】HPよりお問い合わせがありました" />
+        <input type="hidden" name="from_name" value="DELA STAFF HP" />
 
         <div class="form-row">
           <label for="company">Company<span class="req">*</span></label>
@@ -1019,10 +1020,13 @@ if (form) {
     btn.disabled = true;
     btn.textContent = '送信中...';
     const data = new FormData(form);
-    fetch('/', {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {'Content-Type':'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(data).toString()
+      body: data
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (!res.success) throw new Error(res.message);
     })
     .then(() => {
       form.style.display = 'none';
